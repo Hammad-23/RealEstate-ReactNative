@@ -10,16 +10,13 @@ import {
   Linking,
   Image,
   View,
-  AsyncStorage
+  AsyncStorage,
 } from "react-native";
-import { Value } from "react-native-reanimated";
 import SafeAreaView from "react-native-safe-area-view";
 const WIDTH = Dimensions.get("screen").width;
-const height = Dimensions.get('window').height;
+const height = Dimensions.get("window").height;
 
-import RangeSlider, { Slider } from 'react-native-range-slider-expo';
-
-
+import RangeSlider, { Slider } from "react-native-range-slider-expo";
 
 import {
   HeaderLine,
@@ -37,38 +34,34 @@ import { donationHouse } from "../../services/DonationService";
 import { Theme } from "../../theme";
 import ReactNativeModal from "react-native-modal";
 
-
-
 export const Form = () => {
   const [fromValue, setFromValue] = useState(0);
   const [toValue, setToValue] = useState(0);
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0);
   const { getString } = useLocalization();
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState("");
   const [submitModal, setSubmitModal] = useState(false);
-  const submitDonation =async () => {
-    try{
-  const respons=await  donationHouse(amount, description)
-  setResponse(respons.url)
-if(respons.url){
-  setSubmitModal(true);
-  await AsyncStorage.setItem('url',respons.url)
-return;
-}
-alert('Already exsist')
+  const submitDonation = async () => {
+    try {
+      const respons = await donationHouse(amount, description);
+      setResponse(respons.url);
+      if (respons.url) {
+        setSubmitModal(true);
+        await AsyncStorage.setItem("url", respons.url);
+        return;
+      }
+      alert("Already exsist");
+    } catch (e) {
+      console.log(e);
     }
-    catch(e){
-      console.log(e)
-    }
-      // .then((response) => {
-      //   setResponse();
-      //   console.log(response)
-      //   AsyncStorage.setItem('Url',response)
-        
-       
-      // })
+    // .then((response) => {
+    //   setResponse();
+    //   console.log(response)
+    //   AsyncStorage.setItem('Url',response)
+
+    // })
   };
 
   const images = [
@@ -94,10 +87,10 @@ alert('Already exsist')
 
   return (
     <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-       <View style={styles.header}>
+      <View style={styles.header}>
         <ImageBackground
           style={styles.headerBgImage}
-          source={require("../../../assets/header_bg.jpg")}
+          imageStyle={{ borderRadius: 6}}          source={require("../../../assets/header_bg.jpg")}
         >
           <View style={styles.headerOpacityContainer}>
             <Image
@@ -112,42 +105,38 @@ alert('Already exsist')
           </View>
         </ImageBackground>
       </View>
-      <View >
-                    <RangeSlider min={1} max={5}
-                         fromValueOnChange={value => setFromValue(value)}
-                         toValueOnChange={value => setToValue(value)}
-                         initialFromValue={1}
-                         styleSize='small'
-                         toKnobColor={Theme.colors.primaryColor}
-                         fromKnobColor={Theme.colors.primaryColor}
-                         inRangeBarColor	='rgba(14, 96, 80, 0.85)'
-                         outOfRangeBarColor	={Theme.colors.primaryColor}
-                    />
-                                      
-                                      
-           
-               </View>
-               
-              
+      <View>
+        <RangeSlider
+          min={1}
+          max={5}
+          fromValueOnChange={(value) => setFromValue(value)}
+          toValueOnChange={(value) => setToValue(value)}
+          initialFromValue={1}
+          styleSize="small"
+          toKnobColor={Theme.colors.primaryColor}
+          fromKnobColor={Theme.colors.primaryColor}
+          inRangeBarColor="rgba(14, 96, 80, 0.85)"
+          outOfRangeBarColor={Theme.colors.primaryColor}
+        />
+      </View>
+
       {/* <HeaderLine /> */}
       <KeyboardView style={styles.content}>
         <ScrollView contentContainerStyle={styles.contentContainerStyle}>
-    
           {/* <Separator height={2} /> */}
           <View style={styles.stuff}>
             <View style={styles.row}>
               {/* <Text style={styles.titleText}>{getString("House Price ")}</Text> */}
-              <Text style={{ color: "green", fontSize: 20,fontWeight:'300' }}>
+              <Text style={{ color: "green", fontSize: 20, fontWeight: "300" }}>
                 {getString("Amount of Donation?")}
               </Text>
             </View>
             <Separator height={32} />
-            
 
             <View style={styles.mid}>
               {/* <Text style={styles.donation}>Donation Amount:</Text> */}
               <Separator height={2} />
-              <TextInput 
+              <TextInput
                 inputProps={{
                   placeholder: getString("Donation Amount"),
                   keyboardType: "number-pad",
@@ -236,10 +225,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   slider: {
-    position: 'absolute',
+    position: "absolute",
     marginTop: height * 0.57,
     width: height * 0.67,
-    transform: [{ rotateZ: '-90deg' }],
+    transform: [{ rotateZ: "-90deg" }],
     marginLeft: 125,
   },
   content: {
@@ -247,7 +236,7 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     // flexGrow: 1,
-    display:'flex',
+    display: "flex",
     justifyContent: "center",
     padding: 16,
   },
@@ -293,13 +282,9 @@ const styles = StyleSheet.create({
     width: 250,
   },
   header: {
-    borderTopLeftRadius:35,
-    borderTopRightRadius:35,
-    backgroundColor:'rgba(14, 96, 80, 0.85)',
-    height:'30%',
-    width:'100%',
-   
-    
+  
+    height: "30%",
+    width: "100%",
   },
   btn: {
     width: 150,
@@ -321,10 +306,8 @@ const styles = StyleSheet.create({
   headerBgImage: {
     width: "100%",
     height: "100%",
-   
-    
-   
-   
+    borderBottomRightRadius: 35,
+    borderBottomLeftRadius: 35, overflow: 'hidden'
   },
   headerOpacityContainer: {
     width: "100%",
@@ -333,8 +316,7 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "rgba(14, 96, 80, 0.85)",
     borderBottomRightRadius: 35,
-    borderBottomLeftRadius: 35
-   
+    borderBottomLeftRadius: 35,
   },
 
   text: { color: "white", fontSize: 16, fontFamily: "default-medium" },

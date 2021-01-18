@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
   headerBgImage: {
     width: "100%",
     height: "100%",
+    borderBottomRightRadius: 35,
+    borderBottomLeftRadius: 35, overflow: 'hidden'
    
     
    

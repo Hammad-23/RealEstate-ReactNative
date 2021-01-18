@@ -5,7 +5,6 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  AsyncStorage,
 } from "react-native";
 
 import { Text } from "../../components/text";
