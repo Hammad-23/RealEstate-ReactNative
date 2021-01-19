@@ -28,5 +28,6 @@ export default {
   landingScreen:'landingScreen',
   mainScreen:'mainScreen',
   roadMap:'RoadMap',
-  askAnExpert:'askExperts'
+  askAnExpert:'askExperts',
+  DesignHome: 'DesignHome'
 };

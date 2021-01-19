@@ -56,6 +56,8 @@ export const LandingPage = (props: Props) => {
       props.navigation.navigate(NavigationNames.roadMap);
     } else if (item.title === iconsData[3].title) {
       props.navigation.navigate(NavigationNames.askAnExpert);
+    } else if (item.title === iconsData[4].title){
+      props.navigation.navigate(NavigationNames.DesignHome)
     }
   };
 
@@ -131,9 +133,11 @@ export const LandingPage = (props: Props) => {
               <Image source={iconsData[3].image} style={styles.menuIconImage} />
             </View>
           </TouchableOpacity>
-          <Model closeModal={closeModel} isVisible={isVisible} />
+          {/* <Model closeModal={closeModel} isVisible={isVisible} /> */}
             <View>
-              <TouchableOpacity  onPress={()=> setIsVisible(true)} >
+              <TouchableOpacity onPress={()=>{
+                onMenuPressed(iconsData[4]);
+              }}  >
           <Image source={iconsData[4].image} style={styles.menuIconImage} />
           </TouchableOpacity>
           </View>

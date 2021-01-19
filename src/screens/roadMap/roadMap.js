@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Dimensions, Image } from "react-native";
+import { StyleSheet, Dimensions, Image,View,Text } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 
 import  RoadMapGif from '../../../assets/road-map.gif'
@@ -8,17 +8,26 @@ import { Theme } from "../../theme";
 export const RoadMap = () => {
   return (
     <SafeAreaView style={styles.container}>
+    
+      <View style={styles.firstHead}>
+        <Text style={styles.headerText}>Credit to RoadMap</Text>
+      </View>
+    
+    <View style={styles.imgContainer}>
       <Image source={RoadMapGif}/>
-    </SafeAreaView>
+      </View>
+  
+    
+      </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#c3d6e0",
-    justifyContent: "center",
-    alignItems: "center",
+    // flex: 1,
+    // backgroundColor: "#c3d6e0",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   content: {
     flex: 1,
@@ -76,6 +85,23 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  firstHead: {
+    borderBottomRightRadius:45,
+    borderBottomLeftRadius:45,
+    backgroundColor:'rgba(14, 96, 80, 0.85)',
+    height:70,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  imgContainer: {
+   alignItems:'center',
+   
+  },
+  headerText: {
+    color:'white',
+    fontSize:18,
+    fontWeight:'bold'
   },
 
   text: { color: "white", fontSize: 16, fontFamily: "default-medium" },

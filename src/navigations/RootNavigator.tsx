@@ -18,6 +18,7 @@ import { Form } from "../screens/form/formScreen";
 import { LandingPage } from "../screens/landing/LandingPage";
 import { RoadMap } from "../screens/roadMap/roadMap";
 import { AgenList } from "../screens/askAnExpert/index.js";
+import DesignHome from '../screens/designHome'
 
 const RootStack = createStackNavigator();
 
@@ -94,6 +95,10 @@ export default function () {
               <RootStack.Screen
                 name={NavigationNames.askAnExpert}
                 component={AgenList}
+              />
+                <RootStack.Screen
+                name={NavigationNames.DesignHome}
+                component={DesignHome}
               />
             </RootStack.Navigator>
           </NavigationContainer>

@@ -38,6 +38,7 @@ export const AgenList = () => {
       </View >
       <View style={styles.DefDiv}>
         <Text style={styles.txtHead}>Common Definations</Text>
+        
         <Text style={styles.loanText}>FHA loan is a Federal House Administration</Text>
         <Text style={styles.loanText}>Loan Which is a Home Loan backed by the</Text>
         <Text style={styles.loanText}>Federal government</Text>
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius:45,
     borderBottomLeftRadius:45,
     backgroundColor:'rgba(14, 96, 80, 0.85)',
-    height:120,
+    height:70,
     alignItems:'center',
     justifyContent:'center'
   },
